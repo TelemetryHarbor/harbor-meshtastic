@@ -122,8 +122,8 @@ class MeshtasticTelemetryApp:
             if position:
                 self.log(f"  Position: Lat {position.get('latitude', 'N/A')}, Lon {position.get('longitude', 'N/A')}")
                 node_data.extend([
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "Lat", "value": position.get('latitude', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "Long", "value": position.get('longitude', 0)}
+                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "latitude", "value": position.get('latitude', 0)},
+                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "longitude", "value": position.get('longitude', 0)}
                 ])
             
             self.log(f"  Last Heard: {node.get('lastHeard', 'N/A')}")
