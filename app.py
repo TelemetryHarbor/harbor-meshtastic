@@ -9,6 +9,7 @@ from datetime import datetime
 import json
 import threading
 import serial.tools.list_ports
+import copy
 
 class MeshtasticTelemetryApp:
     def __init__(self, master):
@@ -20,6 +21,7 @@ class MeshtasticTelemetryApp:
         self.create_widgets()
         self.interface = None
         self.is_running = False
+        self.nodes_lock = threading.Lock()
 
     def create_widgets(self):
         frame = ttk.Frame(self.master, padding="10")
@@ -43,12 +45,8 @@ class MeshtasticTelemetryApp:
             self.com_port.set(self.com_ports[0])
         self.com_port.grid(row=2, column=1, padx=5, pady=5)
 
-        # Pushing Rate
-        #ttk.Label(frame, text="Pushing Rate (s):").grid(row=3, column=0, sticky=tk.W, padx=5, pady=5)
-        #self.pushing_rate = ttk.Entry(frame, width=30)
-        #self.pushing_rate.insert(0, "1")
-        #self.pushing_rate.grid(row=3, column=1, padx=5, pady=5)
         self.pushing_rate = 300
+
         # Start/Stop Button
         self.start_stop_button = ttk.Button(frame, text="Start", command=self.toggle_data_collection)
         self.start_stop_button.grid(row=4, column=0, columnspan=2, pady=10)
@@ -105,7 +103,8 @@ class MeshtasticTelemetryApp:
                 break
 
     def process_nodes(self):
-        all_nodes = self.interface.nodes
+        with self.nodes_lock:
+            all_nodes = copy.deepcopy(self.interface.nodes)
         
         for node_id, node in all_nodes.items():
             current_time = datetime.utcnow().isoformat() + "Z"
