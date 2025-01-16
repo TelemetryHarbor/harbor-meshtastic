@@ -44,7 +44,7 @@ This integration bridges Meshtastic devices with Telemetry Harbor's powerful dat
      - **COM Port**: The port your Meshtastic device is connected to.  
 
      ```bash
-     python harbor_meshtastic.py
+     python app.py
      ```  
 
 4. **Stream Data**:  
