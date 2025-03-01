@@ -62,7 +62,7 @@ We welcome contributions to enhance the value of these dashboards. If you have s
 
 Telemetry Harbor is dedicated to simplifying IoT data collection, analysis, and visualization. Our mission is to empower users with tools that make telemetry insights accessible and actionable.  
 
-For more information, visit our website: [Telemetry Harbor](https://telemetryhive.com)  
+For more information, visit our website: [Telemetry Harbor](https://telemetryharbor.com)  
 
 ---  
 
