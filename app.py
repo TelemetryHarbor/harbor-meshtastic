@@ -121,8 +121,8 @@ class MeshtasticTelemetryApp:
             if position:
                 self.log(f"  Position: Lat {position.get('latitude', 'N/A')}, Lon {position.get('longitude', 'N/A')}")
                 node_data.extend([
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "latitude", "value": position.get('latitude', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "longitude", "value": position.get('longitude', 0)}
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "latitude", "value": position.get('latitude', 0)},
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "longitude", "value": position.get('longitude', 0)}
                 ])
             
             self.log(f"  Last Heard: {node.get('lastHeard', 'N/A')}")
@@ -136,10 +136,10 @@ class MeshtasticTelemetryApp:
                 self.log(f"    Channel Utilization: {device_metrics.get('channelUtilization', 'N/A')}%")
                 self.log(f"    Air Util TX: {device_metrics.get('airUtilTx', 'N/A')}%")
                 node_data.extend([
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "BatteryLevel", "value": device_metrics.get('batteryLevel', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "Voltage", "value": device_metrics.get('voltage', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "ChannelUtilization", "value": device_metrics.get('channelUtilization', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "AirUtilTX", "value": device_metrics.get('airUtilTx', 0)}
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "BatteryLevel", "value": device_metrics.get('batteryLevel', 0)},
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "Voltage", "value": device_metrics.get('voltage', 0)},
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "ChannelUtilization", "value": device_metrics.get('channelUtilization', 0)},
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "AirUtilTX", "value": device_metrics.get('airUtilTx', 0)}
                 ])
             
             env_metrics = node.get('environmentMetrics', {})
@@ -148,15 +148,15 @@ class MeshtasticTelemetryApp:
                 self.log(f"    Relative Humidity: {env_metrics.get('relativeHumidity', 'N/A')}%")
                 self.log(f"    Barometric Pressure: {env_metrics.get('barometricPressure', 'N/A')} hPa")
                 node_data.extend([
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "Temperature", "value": env_metrics.get('temperature', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "RelativeHumidity", "value": env_metrics.get('relativeHumidity', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "BarometricPressure", "value": env_metrics.get('barometricPressure', 0)}
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "Temperature", "value": env_metrics.get('temperature', 0)},
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "RelativeHumidity", "value": env_metrics.get('relativeHumidity', 0)},
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "BarometricPressure", "value": env_metrics.get('barometricPressure', 0)}
                 ])
             
             air_metrics = node.get('airQualityMetrics', {})
             if air_metrics:
                 self.log(f"    Air Quality: {air_metrics.get('airQuality', 'N/A')}")
-                node_data.append({"time": current_time, "ship_id": str(node_id), "cargo_id": "AirQuality", "value": air_metrics.get('airQuality', 0)})
+                node_data.append({"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "AirQuality", "value": air_metrics.get('airQuality', 0)})
             
             power_metrics = node.get('powerMetrics', {})
             if power_metrics:
@@ -164,9 +164,9 @@ class MeshtasticTelemetryApp:
                 self.log(f"    Voltage: {power_metrics.get('voltage', 'N/A')}V")
                 self.log(f"    Current: {power_metrics.get('current', 'N/A')}A")
                 node_data.extend([
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "Power", "value": power_metrics.get('power', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "PowerVoltage", "value": power_metrics.get('voltage', 0)},
-                    {"time": current_time, "ship_id": str(node_id), "cargo_id": "Current", "value": power_metrics.get('current', 0)}
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "Power", "value": power_metrics.get('power', 0)},
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "PowerVoltage", "value": power_metrics.get('voltage', 0)},
+                    {"time": current_time, "ship_id": str(user_info.get('longName', 'Unknown')), "cargo_id": "Current", "value": power_metrics.get('current', 0)}
                 ])
             
             # Send batch request to Telemetry Harbor for this node
