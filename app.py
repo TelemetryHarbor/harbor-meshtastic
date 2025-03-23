@@ -213,7 +213,7 @@ class MeshtasticTelemetryApp:
         
         if self.interface:
             try:
-                pub.unsubscribe(self.on_receive, "meshtastic.receive")
+                #pub.unsubscribe(self.on_receive, "meshtastic.receive")
                 self.interface.close()
                 self.log("Meshtastic interface closed")
             except Exception as e:
