@@ -1,4 +1,4 @@
-tkinter
+dearpygui
 meshtastic
 pypubsub
 requests
