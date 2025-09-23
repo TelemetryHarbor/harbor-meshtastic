@@ -453,7 +453,7 @@ def create_gui(app_instance):
                 def refresh_ports():
                     dpg.configure_item("com_port_combo", items=get_available_ports())
 
-                dpg.add_button(label="⟳", callback=refresh_ports)
+                dpg.add_button(label="Refresh", callback=refresh_ports)
 
         with dpg.collapsing_header(label="Data to Collect", default_open=True):
             dpg.add_checkbox(label="Position", tag="position_check", default_value=True)
@@ -509,6 +509,7 @@ def create_gui(app_instance):
     dpg.create_viewport(title="Meshtastic Telemetry", width=600, height=800)
     dpg.setup_dearpygui()
     dpg.show_viewport()
+    dpg.set_primary_window("primary_window", True)
 
 
 def main():
@@ -528,6 +529,8 @@ def main():
             new_log = current_log + "\n".join(log_buffer) + "\n"
             dpg.set_value("log_text", new_log)
             log_buffer.clear()
+
+
 
         dpg.render_dearpygui_frame()
 
