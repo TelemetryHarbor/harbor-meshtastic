@@ -29,18 +29,19 @@ The Meshtastic Integration script allows you to connect your Meshtastic device t
      pip install -r requirements.txt
      ```  
 ---
-3. **Run the Script**:  
+3. **Run the Script**:
+    ```bash
+     python app.py
+     ```  
    - Execute the script and provide the required information:  
      - **API Normal (NOT BATCH) Endpoint**: Obtain this from your Telemetry Harbor account.  
      - **API Key**: Your unique key for secure communication.  
      - **COM Port**: The port your Meshtastic device is connected to.  
 
-     ```bash
-     python app.py
-     ```  
+
 ---
 4. **Stream Data**:  
-   - The script will push telemetry data from your device to the Telemetry Harbor batch endpoint.  
+   - The script will push telemetry data from your device to the Telemetry Harbor API endpoint.  
 ---
 5. **Visualize in Grafana**:  
    - Log in to your Telemetry Harbor Grafana instance.  
