@@ -31,7 +31,7 @@ The Meshtastic Integration script allows you to connect your Meshtastic device t
 ---
 3. **Run the Script**:  
    - Execute the script and provide the required information:  
-     - **Normal Endpoint**: Obtain this from your Telemetry Harbor account.  
+     - **API Normal (NOT BATCH) Endpoint**: Obtain this from your Telemetry Harbor account.  
      - **API Key**: Your unique key for secure communication.  
      - **COM Port**: The port your Meshtastic device is connected to.  
 
